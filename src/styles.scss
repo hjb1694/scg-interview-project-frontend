@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Roboto:wght@300;700&display=swap");
 
 *,
 *::before,
@@ -10,9 +11,21 @@
 
 html {
   font-size: 62.5%;
+  height: 100%;
 }
 
 body {
-  background: #444;
-  padding: 2rem;
+  background: linear-gradient(
+      to bottom right,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url(./assets/metal.jpg) center / cover;
+  padding: 1rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+button,
+select {
+  cursor: pointer;
 }

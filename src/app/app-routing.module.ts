@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Router, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 //Pages
 import { HomePageComponent } from './pages/home/home.page';
+import { QuotePageComponent } from './pages/quote/quote.page';
 
 const routes: Routes = [
     {
@@ -13,6 +14,10 @@ const routes: Routes = [
         path: '', 
         pathMatch: 'full', 
         redirectTo: 'home'
+    }, 
+    {
+        path: 'get-quote', 
+        component: QuotePageComponent
     }
 ]
 
