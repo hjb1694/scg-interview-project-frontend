@@ -12,6 +12,7 @@
 html {
   font-size: 62.5%;
   height: 100%;
+  box-sizing: border-box;
 }
 
 body {
@@ -28,4 +29,25 @@ body {
 button,
 select {
   cursor: pointer;
+}
+
+.btn {
+  font-size: 2rem;
+  border: 0;
+  background: rgb(66, 104, 161);
+  padding: 1rem;
+  color: #fff;
+  border-radius: 1rem;
+  display: block;
+  width: auto;
+  margin: 1rem auto;
+  transition: all 0.3s;
+  outline: none;
+
+  &:hover,
+  &:active {
+    background: rgb(41, 66, 102);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.24);
+    transform: translateY(-2px);
+  }
 }

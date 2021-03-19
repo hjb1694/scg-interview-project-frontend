@@ -1,0 +1,130 @@
+.quote-form {
+  padding: 1rem;
+  margin: 2rem 0;
+
+  &__part {
+    border: 1px solid #888;
+    border-radius: 1rem;
+    padding: 1rem;
+    position: relative;
+    background: #fafafa;
+
+    &--one,
+    &--two {
+      display: none;
+
+      &.show {
+        display: block;
+      }
+    }
+  }
+
+  &__heading {
+    position: absolute;
+    background: #fff;
+    font-size: 2rem;
+    top: -2rem;
+    left: 2rem;
+    padding: 0.5rem;
+    border: 2px dashed #888;
+    border-radius: 1rem;
+    color: #555;
+    transform: rotate(-3deg);
+  }
+
+  &__subheading {
+    font-size: 1.8rem;
+  }
+
+  &__body {
+    margin: 2rem 0 1rem 0;
+  }
+}
+
+.fg {
+  margin: 1rem 0;
+}
+
+.input-container {
+  position: relative;
+  height: 4rem;
+}
+
+.inp,
+.select-inp {
+  display: block;
+  width: 100%;
+  font-size: 2rem;
+  padding: 3px;
+  outline: none;
+  border: 1px solid #888;
+  border-radius: 0.5rem;
+  transition: border 0.4s;
+  color: #222;
+}
+
+.inp {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.inp:focus,
+.select-inp:focus {
+  border: 1px solid rgb(51, 127, 177);
+}
+
+.inp-label {
+  display: block;
+  font-size: 2rem;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  pointer-events: none;
+  color: #888;
+  transition: all 0.4s;
+}
+
+.inp:focus + .inp-label,
+.inp:not(:placeholder-shown) + .inp-label {
+  transform: translateY(2.7rem);
+  font-size: 1.4rem;
+  color: rgb(51, 127, 177);
+}
+
+.select-inp > option:disabled {
+  color: #888;
+}
+
+section {
+  padding: 1rem;
+}
+
+.section-heading {
+  font-size: 3rem;
+  text-align: center;
+  color: #555;
+}
+
+.section-text {
+  font-size: 1.6rem;
+  margin: 2rem 0 4rem 0;
+}
+
+@media (min-width: 650px) {
+  .name-fields-grid,
+  .csz-grid,
+  .add-ons-grid {
+    display: grid;
+    column-gap: 2rem;
+  }
+
+  .name-fields-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .csz-grid,
+  .add-ons-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

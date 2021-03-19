@@ -1,1 +1,99 @@
 <app-header></app-header>
+<section>
+    <h1 class="section-heading">Get a Quote</h1>
+    <p class="section-text">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus, praesentium facilis perspiciatis sint nesciunt eaque vero repellat magni aspernatur at, deleniti consectetur! Consequuntur numquam aperiam explicabo, repellendus obcaecati voluptatem officia quo commodi reprehenderit consequatur dolorum quod illo est, cum dolores beatae corporis, fugit nam. Quaerat blanditiis cupiditate, tempore necessitatibus ipsum distinctio inventore magni. Repudiandae, modi unde quas expedita recusandae rerum non iste, natus nesciunt porro necessitatibus consectetur minus doloremque ut, possimus aperiam. Reprehenderit, optio dolores.
+    </p>
+    <form class="quote-form" autocomplete="off">
+        <div 
+        class="quote-form__part quote-form__part--one"
+        [ngClass]="{show: currentFormPart === 1}"
+        >
+            <h2 class="quote-form__heading">Part One</h2>
+            <div class="quote-form__body">
+                <div class="name-fields-grid">
+                    <div class="fg">
+                        <div class="input-container">
+                            <input type="text" id="first-name" class="inp" placeholder=" ">
+                            <label class="inp-label" for="first-name">First Name</label>
+                        </div>
+                    </div>
+                    <div class="fg">
+                        <div class="input-container">
+                            <input type="text" id="last-name" class="inp" placeholder=" ">
+                            <label class="inp-label" for="last-name">Last Name</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="fg">
+                    <div class="input-container">
+                        <input type="text" id="street" class="inp" placeholder=" ">
+                        <label class="inp-label" for="street">Street</label>
+                    </div>
+                </div>
+                <div class="csz-grid">
+                    <div class="fg">
+                        <div class="input-container">
+                            <input type="text" id="city" class="inp" placeholder=" ">
+                            <label class="inp-label" for="city">City</label>
+                        </div>
+                    </div>
+                    <div class="fg">
+                        <select class="select-inp">
+                            <option value="" selected disabled hidden>-- Select State --</option>
+                            <option 
+                            *ngFor="let state of states"
+                            [value]="state"
+                            >{{ state }}</option>
+                        </select>
+                    </div>
+                    <div class="fg">
+                        <div class="input-container">
+                            <input type="text" id="zip" class="inp" placeholder=" " maxlength="5">
+                            <label class="inp-label" for="zip">Zip Code</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn" (click)="showFormPart(2)">Next &rarr;</button>
+            </div>
+        </div>
+        <div 
+        class="quote-form__part quote-form__part--two"
+        [ngClass]="{show: currentFormPart === 2}"
+        >
+            <h2 class="quote-form__heading">Part Two</h2>
+            <div class="quote-form__body">
+                <div class="fg">
+                    <div class="input-container">
+                        <input type="number" id="square-footage" class="inp" placeholder=" ">
+                        <label class="inp-label" for="square-footage">Square Footage of Garage</label>
+                    </div>
+                </div>
+                <h3 class="quote-form__subheading">Add-Ons &#40;Optional&#41;</h3>
+                <div class="add-ons-grid">
+                    <div class="fg">
+                        <div class="input-container">
+                            <input type="number" id="cabinets" class="inp" placeholder=" ">
+                            <label class="inp-label" for="cabinets"># Cabinets</label>
+                        </div>
+                    </div>
+                    <div class="fg">
+                        <div class="input-container">
+                            <input type="number" id="garage-openers" class="inp" placeholder=" ">
+                            <label class="inp-label" for="garage-openers"># Smart Garage Openers</label>
+                        </div>
+                    </div>
+                    <div class="fg">
+                        <div class="input-container">
+                            <input type="number" id="bike-racks" class="inp" placeholder=" ">
+                            <label class="inp-label" for="bike-racks"># Bike Racks</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Calculate Quote &rarr;</button>
+                <button type="button" class="btn" (click)="showFormPart(1)">&larr; Go Back</button>
+            </div>
+        </div>
+    </form>
+</section>
+
