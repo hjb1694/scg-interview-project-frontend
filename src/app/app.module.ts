@@ -5,13 +5,18 @@ import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { HomePageModule } from './pages/home/home.module';
+import { QuotePageModule } from './pages/quote/quote.module';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule, 
-    AppRoutingModule
+    AppRoutingModule, 
+    HomePageModule, 
+    QuotePageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
