@@ -128,3 +128,16 @@ section {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.errbox {
+  border: 2px solid #f00;
+  background: rgb(255, 228, 228);
+  padding: 1rem;
+  border-radius: 1rem;
+  list-style-position: inside;
+
+  li {
+    font-size: 1.4rem;
+    color: #f00;
+  }
+}

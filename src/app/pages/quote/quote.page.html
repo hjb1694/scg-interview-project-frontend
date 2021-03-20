@@ -4,7 +4,12 @@
     <p class="section-text">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus, praesentium facilis perspiciatis sint nesciunt eaque vero repellat magni aspernatur at, deleniti consectetur! Consequuntur numquam aperiam explicabo, repellendus obcaecati voluptatem officia quo commodi reprehenderit consequatur dolorum quod illo est, cum dolores beatae corporis, fugit nam. Quaerat blanditiis cupiditate, tempore necessitatibus ipsum distinctio inventore magni. Repudiandae, modi unde quas expedita recusandae rerum non iste, natus nesciunt porro necessitatibus consectetur minus doloremque ut, possimus aperiam. Reprehenderit, optio dolores.
     </p>
-    <form class="quote-form" autocomplete="off">
+    <form 
+    [formGroup]="quoteForm"
+    class="quote-form" 
+    autocomplete="off"
+    (ngSubmit)="submitForm()"
+    >
         <div 
         class="quote-form__part quote-form__part--one"
         [ngClass]="{show: currentFormPart === 1}"
@@ -14,32 +19,59 @@
                 <div class="name-fields-grid">
                     <div class="fg">
                         <div class="input-container">
-                            <input type="text" id="first-name" class="inp" placeholder=" ">
+                            <input 
+                            type="text" 
+                            id="first-name" 
+                            class="inp" 
+                            placeholder=" "
+                            formControlName="firstName"
+                            />
                             <label class="inp-label" for="first-name">First Name</label>
                         </div>
                     </div>
                     <div class="fg">
                         <div class="input-container">
-                            <input type="text" id="last-name" class="inp" placeholder=" ">
+                            <input 
+                            type="text" 
+                            id="last-name" 
+                            class="inp" 
+                            placeholder=" "
+                            formControlName="lastName"
+                            />
                             <label class="inp-label" for="last-name">Last Name</label>
                         </div>
                     </div>
                 </div>
                 <div class="fg">
                     <div class="input-container">
-                        <input type="text" id="street" class="inp" placeholder=" ">
+                        <input 
+                        type="text" 
+                        id="street" 
+                        class="inp" 
+                        placeholder=" "
+                        formControlName="street"
+                        />
                         <label class="inp-label" for="street">Street</label>
                     </div>
                 </div>
                 <div class="csz-grid">
                     <div class="fg">
                         <div class="input-container">
-                            <input type="text" id="city" class="inp" placeholder=" ">
+                            <input 
+                            type="text" 
+                            id="city" 
+                            class="inp" 
+                            placeholder=" "
+                            formControlName="city"
+                            />
                             <label class="inp-label" for="city">City</label>
                         </div>
                     </div>
                     <div class="fg">
-                        <select class="select-inp">
+                        <select 
+                        class="select-inp"
+                        formControlName="state"
+                        >
                             <option value="" selected disabled hidden>-- Select State --</option>
                             <option 
                             *ngFor="let state of states"
@@ -49,12 +81,39 @@
                     </div>
                     <div class="fg">
                         <div class="input-container">
-                            <input type="text" id="zip" class="inp" placeholder=" " maxlength="5">
+                            <input 
+                            type="text" 
+                            id="zip" 
+                            class="inp" 
+                            placeholder=" " 
+                            maxlength="5"
+                            formControlName="zip"
+                            />
                             <label class="inp-label" for="zip">Zip Code</label>
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn" (click)="showFormPart(2)">Next &rarr;</button>
+                <div class="fg">
+                    <div class="input-container">
+                        <input 
+                        type="tel" 
+                        id="phone" 
+                        class="inp" 
+                        placeholder=" "
+                        formControlName="phone"
+                        />
+                        <label class="inp-label" for="phone">Phone</label>
+                    </div>
+                </div>
+                <button 
+                type="button" 
+                class="btn" 
+                (click)="showFormPart(2)">Next &rarr;</button>
+                <div class="errbox" *ngIf="formErrors.partOne.length">
+                    <ul>
+                        <li *ngFor="let err of formErrors.partOne">{{ err }}</li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div 
@@ -65,7 +124,13 @@
             <div class="quote-form__body">
                 <div class="fg">
                     <div class="input-container">
-                        <input type="number" id="square-footage" class="inp" placeholder=" ">
+                        <input 
+                        type="number" 
+                        id="square-footage" 
+                        class="inp" 
+                        placeholder=" "
+                        formControlName="sqft"
+                        />
                         <label class="inp-label" for="square-footage">Square Footage of Garage</label>
                     </div>
                 </div>
@@ -73,19 +138,37 @@
                 <div class="add-ons-grid">
                     <div class="fg">
                         <div class="input-container">
-                            <input type="number" id="cabinets" class="inp" placeholder=" ">
+                            <input 
+                            type="number" 
+                            id="cabinets" 
+                            class="inp" 
+                            placeholder=" "
+                            formControlName="cabinets"
+                            />
                             <label class="inp-label" for="cabinets"># Cabinets</label>
                         </div>
                     </div>
                     <div class="fg">
                         <div class="input-container">
-                            <input type="number" id="garage-openers" class="inp" placeholder=" ">
+                            <input 
+                            type="number" 
+                            id="garage-openers" 
+                            class="inp" 
+                            placeholder=" "
+                            formControlName="openers"
+                            />
                             <label class="inp-label" for="garage-openers"># Smart Garage Openers</label>
                         </div>
                     </div>
                     <div class="fg">
                         <div class="input-container">
-                            <input type="number" id="bike-racks" class="inp" placeholder=" ">
+                            <input 
+                            type="number" 
+                            id="bike-racks" 
+                            class="inp" 
+                            placeholder=" "
+                            formControlName="racks"
+                            />
                             <label class="inp-label" for="bike-racks"># Bike Racks</label>
                         </div>
                     </div>
