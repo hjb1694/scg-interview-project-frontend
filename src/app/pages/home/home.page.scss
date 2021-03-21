@@ -12,17 +12,8 @@
 
 .overview-item {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   margin: 4rem 0;
-
-  &:nth-child(odd) {
-    grid-template-areas: "txt txt img";
-  }
-
-  &:nth-child(even) {
-    grid-template-areas: "img txt txt";
-  }
 
   &__text {
     grid-area: txt;
@@ -36,5 +27,32 @@
     margin: 0 auto;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.24);
     border-radius: 1rem;
+  }
+}
+
+@media (min-width: 675px) {
+  .overview-item {
+    grid-template-columns: repeat(3, 1fr);
+
+    &:nth-child(odd) {
+      grid-template-areas: "txt txt img";
+    }
+
+    &:nth-child(even) {
+      grid-template-areas: "img txt txt";
+    }
+  }
+}
+
+@media (max-width: 675px) {
+  .overview-item {
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+      "txt"
+      "img";
+
+    &__image {
+      margin: 2rem auto;
+    }
   }
 }

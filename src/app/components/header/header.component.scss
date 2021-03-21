@@ -1,4 +1,11 @@
 .header {
   min-height: 6rem;
   box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.24);
+
+  &__logo {
+    width: 15rem;
+    margin: 0 auto;
+    padding: 2rem;
+    display: block;
+  }
 }
