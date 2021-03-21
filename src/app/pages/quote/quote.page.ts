@@ -41,11 +41,11 @@ export class QuotePageComponent implements OnInit{
             }, 
             {
                 field: 'zip', 
-                errMsg: 'Please enter a valid zip code.'
+                errMsg: 'Please enter a valid 5-digit zip code.'
             }, 
             {
                 field: 'phone', 
-                errMsg: 'Please enter a valid phone number.'
+                errMsg: 'Please enter a valid phone number with format XXX-XXX-XXXX.'
             }
         ], 
         partTwo: [
@@ -63,15 +63,27 @@ export class QuotePageComponent implements OnInit{
             'firstName': new FormControl('', [
                 CustomValidators.required
             ]), 
-            'lastName': new FormControl(''), 
-            'street': new FormControl(''), 
-            'city': new FormControl(''), 
+            'lastName': new FormControl('', [
+                CustomValidators.required
+            ]), 
+            'street': new FormControl('', [
+                CustomValidators.required
+            ]), 
+            'city': new FormControl('', [
+                CustomValidators.required
+            ]), 
             'state': new FormControl('', [
                 Validators.required
             ]), 
-            'zip': new FormControl(''), 
-            'phone': new FormControl(''), 
-            'sqft': new FormControl(null), 
+            'zip': new FormControl('', [
+                CustomValidators.zipCode
+            ]), 
+            'phone': new FormControl('', [
+                CustomValidators.phoneFormat
+            ]), 
+            'sqft': new FormControl(null, [
+                CustomValidators.required
+            ]), 
             'cabinets': new FormControl(0), 
             'openers': new FormControl(0), 
             'racks': new FormControl(0)
@@ -104,7 +116,9 @@ export class QuotePageComponent implements OnInit{
     }
 
     public submitForm(): void{
+        if(!this.validatePart('partTwo')) return;
 
+        alert('success!');
     }
 
 }

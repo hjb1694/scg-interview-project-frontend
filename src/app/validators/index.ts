@@ -9,4 +9,20 @@ export default class CustomValidators{
         }
         return null;
     }
+
+    static phoneFormat(control: AbstractControl): ValidationErrors {
+        const phoneRegs = /^[0-9]{3}\-[0-9]{3}\-[0-9]{4}$/;
+        if(!phoneRegs.test(control.value)){
+            return {phoneValidFormat: false}
+        }
+        return null;
+    }
+
+    static zipCode(control: AbstractControl): ValidationErrors{
+        const zipRegs = /^[0-9]{5}$/;
+        if(!zipRegs.test(control.value)){
+            return {validZip: false}
+        }
+        return null;
+    }
 }
