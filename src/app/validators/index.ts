@@ -25,4 +25,11 @@ export default class CustomValidators{
         }
         return null;
     }
+
+    static wholeNumber(control: AbstractControl): ValidationErrors{
+        if(!Number.isInteger(+control.value)){
+            return {isInt: false}
+        }
+        return null;
+    }
 }

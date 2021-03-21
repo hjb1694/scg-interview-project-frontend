@@ -12,7 +12,10 @@ export class QuotePageComponent implements OnInit{
     public states: string[] = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
     
     public currentFormPart: number = 1;
+    public quoteFormIsShown: boolean = true;
+    public resultIsShown: boolean = false;
     public quoteForm: FormGroup;
+    public results = null;
     public formErrors = {
         partOne: [], 
         partTwo: []
@@ -52,6 +55,18 @@ export class QuotePageComponent implements OnInit{
             {
                 field: 'sqft', 
                 errMsg: 'Please enter a square footage.', 
+            }, 
+            {
+                field: 'cabinets', 
+                errMsg: 'Number entered must be whole number.'
+            }, 
+            {
+                field: 'openers', 
+                errMsg: 'Number entered must be whole number.'
+            },
+            {
+                field: 'racks', 
+                errMsg: 'Number entered must be whole number.'
             }
         ]
     }
@@ -81,12 +96,18 @@ export class QuotePageComponent implements OnInit{
             'phone': new FormControl('', [
                 CustomValidators.phoneFormat
             ]), 
-            'sqft': new FormControl(null, [
-                CustomValidators.required
+            'sqft': new FormControl('', [
+                Validators.required
             ]), 
-            'cabinets': new FormControl(0), 
-            'openers': new FormControl(0), 
-            'racks': new FormControl(0)
+            'cabinets': new FormControl(0, [
+                CustomValidators.wholeNumber
+            ]), 
+            'openers': new FormControl(0, [
+                CustomValidators.wholeNumber
+            ]), 
+            'racks': new FormControl(0, [
+                CustomValidators.wholeNumber
+            ])
         });
     }
 
@@ -118,7 +139,26 @@ export class QuotePageComponent implements OnInit{
     public submitForm(): void{
         if(!this.validatePart('partTwo')) return;
 
-        alert('success!');
+        this.results = {...this.quoteForm.value}
+        
+        this.calculateQuote();
+
+        this.quoteFormIsShown = false;
+        this.resultIsShown = true;
+        
+    }
+
+    private calculateQuote(): void{
+        this.results.flooringCost = +this.results.sqft * 2.29;
+        this.results.cabinetCost = +this.results.cabinets * 150;
+        this.results.openersCost = +this.results.openers * 300;
+        this.results.bikeRackCost = +this.results.racks * 50;
+
+        this.results.overallCost = 
+        this.results.flooringCost + 
+        this.results.cabinetCost + 
+        this.results.openersCost + 
+        this.results.bikeRackCost;
     }
 
 }

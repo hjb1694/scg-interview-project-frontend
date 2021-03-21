@@ -5,6 +5,7 @@
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus, praesentium facilis perspiciatis sint nesciunt eaque vero repellat magni aspernatur at, deleniti consectetur! Consequuntur numquam aperiam explicabo, repellendus obcaecati voluptatem officia quo commodi reprehenderit consequatur dolorum quod illo est, cum dolores beatae corporis, fugit nam. Quaerat blanditiis cupiditate, tempore necessitatibus ipsum distinctio inventore magni. Repudiandae, modi unde quas expedita recusandae rerum non iste, natus nesciunt porro necessitatibus consectetur minus doloremque ut, possimus aperiam. Reprehenderit, optio dolores.
     </p>
     <form 
+    *ngIf="quoteFormIsShown"
     [formGroup]="quoteForm"
     class="quote-form" 
     autocomplete="off"
@@ -175,8 +176,79 @@
                 </div>
                 <button type="submit" class="btn">Calculate Quote &rarr;</button>
                 <button type="button" class="btn" (click)="showFormPart(1)">&larr; Go Back</button>
+                <div class="errbox" *ngIf="formErrors.partTwo.length">
+                    <ul>
+                        <li *ngFor="let err of formErrors.partTwo">{{ err }}</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </form>
+    <section
+    *ngIf="resultIsShown"
+    class="results"
+    >
+        <h2 class="results__heading">Results</h2>
+        <table class="results__table">
+            <tbody>
+                <tr>
+                    <td class="results__field-name">First Name</td>
+                    <td>{{ results.firstName }}</td>
+                </tr>
+                <tr>
+                    <td class="results__field-name">Last Name</td>
+                    <td>{{ results.lastName }}</td>
+                </tr>
+                <tr>
+                    <td class="results__field-name">Street</td>
+                    <td>{{ results.street }}</td>
+                </tr>
+                <tr>
+                    <td class="results__field-name">City</td>
+                    <td>{{ results.city }}</td>
+                </tr>
+                <tr>
+                    <td class="results__field-name">State</td>
+                    <td>{{ results.state }}</td>
+                </tr>
+                <tr>
+                    <td class="results__field-name">Zip Code</td>
+                    <td>{{ results.zip }}</td>
+                </tr>
+                <tr>
+                    <td class="results__field-name">Phone</td>
+                    <td>{{ results.phone }}</td>
+                </tr>
+                <tr>
+                    <td class="results__field-name">Flooring</td>
+                    <td>
+                        {{ results.sqft | number:2-2 }} sqft * $2.29 = <strong>{{ results.flooringCost | currency }} USD</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="results__field-name">Cabinets</td>
+                    <td>
+                        {{ results.cabinets }} * $150.00 = <strong>{{ results.cabinetCost | currency}} USD</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="results__field-name">Smart Openers</td>
+                    <td>
+                        {{ results.openers }} * $300.00 = <strong>{{ results.openersCost | currency}} USD</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="results__field-name">Bike Racks</td>
+                    <td>
+                        {{ results.racks }} * $50.00 = <strong>{{ results.bikeRackCost | currency}} USD</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="results__field-name">Total</td>
+                    <td><strong class="total">{{ results.overallCost | currency }} USD</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </section>
 
